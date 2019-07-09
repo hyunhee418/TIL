@@ -4,6 +4,8 @@ Git: SCM(source code manager) / VCS(version control system)
 
 Git은 버젼관리를 해주는 감시카메라
 
+## Bash  명령어
+
 `git init`: 시작하자 (관리시작)
 
 `cd`: (change directory)폴더를 이동한다.
@@ -67,6 +69,4 @@ Tab: 폴더명을 작성 중 tab누르면 자동 완성
 `git add .`, `git add -A`: 다 add 한다.
 
 repository: git이 관리하는 폴더
-
-
 
