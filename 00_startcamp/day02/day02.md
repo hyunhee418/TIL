@@ -70,14 +70,8 @@ Tab: 폴더명을 작성 중 tab누르면 자동 완성
 
 repository: git이 관리하는 폴더
 
-
-
-
-
-# Browser 5개 열기
-
-``` python
-import webbrowser
+#Browser 5개 열기
+``` import webbrowser
 
 urls = [
     'github',
@@ -87,12 +81,8 @@ urls = [
     '2-ss3.slack'
 ]
 
+
+for i in urls:
     webbrowser.open('http://' + i + '.com')
-```
 
-
-
-
-
-'주소를 요청을 보내고 응답으로 문서를 준다.'
-
+'주소를 요청을 보내고 응답으로 문서를 준다.' ```
