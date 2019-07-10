@@ -8,7 +8,6 @@ with open('lunch.csv', 'w', encoding='utf-8') as f:
 #    for lunch in lunches:
         # print(lunch)  # key 값이 나옴.
         # print(lunches[lunch])  # value 값
-    f.write('식당이름, 전화번호\n')
+    f.write('식당이름, 전화번호\n' )
     for name, phone in lunches.items():
         f.write(f'{name}, {phone}\n')
-

@@ -15,7 +15,7 @@ rows = text.select('.lst50')
 
 # print(type(rows))  # rows는 list이다. 따라서, 하나씩 가져오기
 
-writer = csv.writer(open('melon50.csv', 'w', encoding='utf-8', newline=''))  # 대리작가 고용(writer), newline=''는 writer 두번으로 enter가 두 번 들어가므로 없애기
+writer = csv.writer(open('melon50.csv', 'w', encoding='utf-8', newline=''))  # 대리작가 고용(writer), newline=''는 enter가 두 번 들어가므로 없애기
 writer.writerow(['순위', '제목', '가수'])
 
 for row in rows:

@@ -96,3 +96,6 @@ urls = [
 
 '주소를 요청을 보내고 응답으로 문서를 준다.'
 
+.vscode 폴더 자동 생성: 자동으로 visual studio code에 저장되고, 저장된 것으로 재시작
+
+csv: comma seperated value
