@@ -6,7 +6,7 @@
 
 # choice([1, 2, 3, 4, 5])
 
-from flask import Flask, render_template  # render_template: template를 보여주는 함수
+from flask import Flask, render_template  # flask가 render_template를 실행할 때 반드시 template를 뒤진다.
 import random
 
 
