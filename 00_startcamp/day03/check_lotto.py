@@ -17,6 +17,8 @@ if len(rest) == 0:
     print('1등!!!')
 elif len(list(rest2)) == 0:
     print('2등!!!')
+elif len(rest) == 1:
+    print('3등!!!')    
 elif len(rest) == 2:
     print('4등!!!')
 elif len(rest) == 3:
