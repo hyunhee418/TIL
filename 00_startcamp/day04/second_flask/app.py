@@ -1,4 +1,6 @@
 import datetime
+import requests
+import bs4
 
 from art import*
 from flask import Flask, render_template, request
@@ -33,14 +35,24 @@ def send():
 @app.route('/receive', methods=['POST'])
 def receive():  # requests는 사온 애 request랑 다른 애 요청에 대한 모든 정보를 담고 있다.
     
+    url = 'https://m.stock.naver.com/marketindex/'
+    
+    response = requests.get(url).text
+    text = bs4.BeautifulSoup(response, 'html.parser') 
+    exchange_rate = text.select_one('#content > div > div.ct_box.intnl_major_item > ul > li:nth-child(1) > a > div.price_wrp > span').text
+    rate = float(exchange_rate.replace(',', ''))
+
     data = request.form.get('msg')  # 요청 중 넘어온 데이터만 보여줘
     stock = Stock(data, token='pk_63c229409ff14b67a6cc81e38927f1c4').get_quote()
     company_name = stock['companyName']
     latest_price = stock['iexRealtimePrice']
+    
+    won_price = int(latest_price) * int(rate)
+    final_price = str(won_price)
     return render_template(
         'receive.html',
         c_name=company_name,
-        l_price=latest_price
+        f_price=final_price,
         )
 
 
