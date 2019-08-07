@@ -1,0 +1,22 @@
+.aa {
+    background-color: coral;
+    padding: 20px;
+}
+
+.bb{
+    background-color: aqua;
+    width: 300px;
+    padding: 20px;
+}
+
+.xx{
+    width: 200px;
+}
+
+.big_lh{
+    line-height: 2em;
+}
+
+.id{
+    display: inline-block;
+}

@@ -1,0 +1,15 @@
+{% block title %}{% endblock %}
+{% block body %}
+<form action="/utils/catch/" method="GET" class="form-group">
+    <h1>맛집 추천</h1>
+    <div>
+        <label for="spot">지역 : </label>
+        <input id="spot" type="text" name="spot">
+    </div>
+    <div>
+        <label for="menu">메뉴 : </label>
+        <input id="menu" type="text" name="menu">
+        <input type="submit" class="btn btn-outline-secondary">
+    </div>
+</form>
+{% endblock %}

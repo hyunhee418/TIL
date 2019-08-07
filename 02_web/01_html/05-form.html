@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Form</title>
+</head>
+<body>
+	<form action="">
+		<div>
+			주문서를 작성하여 주십시오.<br>
+			<input type="text" placeholder="이름을 입력하세요."><br>   <!-- browser가 하는 일이지 input은 그저 뭘 받겠다가 전부-->
+			<input type="date">			
+		</div>
+	</form>
+		<div>
+			<h2>1. 샌드위치 선택</h2>
+				<select name="sandwich">
+					<option value="a">에그 마요</option><br>
+					<option value="b">이탈리안 비엠티</option><br>
+					<option value="c">터키 베이컨 아보카도</option>
+				</select>
+			<h2>2. 사이즈 선택</h2>
+				<input type="number">
+			<h2>3. 빵</h2>
+				<select name="bread">
+					<option value="a_bread">허니오트</option>
+					<option value="b_bread" disabled>플랫브래드</option>
+					<option value="c_bread">하티 이탈리안</option>
+				</select>
+			<h2>4. 야채/소스</h2>
+				<input type="checkbox" name="option" value="tamato">토마토<br>
+				<input type="checkbox" name="option" value="mofkfdf">오이<br>
+				<input type="checkbox" name="option" value="hala">할라피뇨<br>
+				<input type="checkbox" name="option" value="hot chili">핫 칠리<br>
+				<input type="checkbox" name="option" value="babecue">바베큐<br>
+			<input type="submit">
+		</div>
+
+			<!-- <input type="radio" value="python" checked>Python<br>
+			<input type="radio" value="HTML">HTML<br>
+			<input type="radio" value="CSS">CSS<br>
+			<input type="radio" value="JS" disabled>JS<br>
+		</div>
+		<div>
+			<select name="menu">
+				<option value="a">오징어볶음</option>
+				<option value="b" selected>우돈비밤밥</option>
+				<option value="out" disabled>햄버거</option>
+			</select>
+		</div>
+
+		<div>
+			<input type="checkbox" name="option" value="overstudy">야자
+			<input type="checkbox" name="option" value="addional">보충
+			<input type="checkbox" name="option" value="weekend">주말
+		</div>
+  <form action="#">   <!-- action (어디로 정보를 보낼꺼야) URL형태의 정보 -->
+
+	</form>  
+</body>
+</html>

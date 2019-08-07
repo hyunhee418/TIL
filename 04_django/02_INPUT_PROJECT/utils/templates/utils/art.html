@@ -1,0 +1,28 @@
+{% extends 'utils/base.html' %}
+{% block title %} Art {% endblock %}
+{% block body %}
+    <h1>Asciify</h1>
+    <p>Input Some text below</p>
+
+    <form action="/utils/output/" method="GET">   <!-- 이 url로 보내 / GET요청은 보안이 중요치 않은 정보일 경우 사용 -->
+        <!-- {% csrf_token %} ->  POST일 때 반드시 들어가야할 부분 -->
+        <div>
+            <label for="word">text</label>
+            <input id="word" name="user-input" type="text">
+        </div>
+        <div>
+            <label for="font">font</label>
+            <!-- name이 골라내는 이름, value가 실제 데이터 -->
+            <select name="user-font">
+                {% for font in fonts %}
+                <option value="{{ font }}">
+                    {{ font }}
+                </option>
+                {% endfor %}
+            </select>
+        </div>
+        <div>    
+            <input type="submit">
+        </div>
+    </form>
+{% endblock %}
