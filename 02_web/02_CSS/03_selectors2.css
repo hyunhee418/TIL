@@ -20,8 +20,8 @@ p:first-child{
 }
 
 /* 부모는 모르겠고 아무튼 4째인데 알고보니 p */
-p:nth-child(4){
-    color: white;
+a:nth-child(4){
+    color: rgb(170, 46, 122);
 }
 
 /* p요소중에 마지막 자식을 선택 */

@@ -15,12 +15,14 @@
     margin-left: 30px;
 }
 
+
 .static-box{
     position: static;
     background-color: salmon;
     color: red;
     text-align: center;
     height: 150px;
+    top: 50px; left: 50px;
 }
 
 .relative-box{
