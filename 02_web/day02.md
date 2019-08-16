@@ -29,5 +29,3 @@ p:first-child : 요소 중에 첫번째 애가 p라면 적용
 p:nth-child(4) : 요소 중에 4번째 애가 p라면 적용
 
 p:last-child: 마지막 요소가 p라면 적용
-
-  *  
