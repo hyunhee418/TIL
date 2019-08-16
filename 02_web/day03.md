@@ -80,7 +80,7 @@ width, height는 상속되진 않지만, parent의 크기에 제한되어 max가
 
 absolute는 부모가 무조건 static이 아니여야 함.
 
-absolute는 static 이면 body 기준으로 움직임. 부모가 relative면 부모기준으로 움직임.
+absolute는 부모가 static 이면 부모를 건너뛰어 body 기준으로 움직임. 부모가 relative면 부모기준으로 움직임.
 
 
 
