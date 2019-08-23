@@ -8,6 +8,13 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="190816" />
     <orderEntry type="module" module-name="190820" />
+    <orderEntry type="module" module-name="190820+" />
+    <orderEntry type="module" module-name="190820" />
+    <orderEntry type="module" module-name="190822" />
+    <orderEntry type="module" module-name="190820+" />
+    <orderEntry type="module" module-name="exam" />
+    <orderEntry type="module" module-name="새 폴더" />
+    <orderEntry type="module" module-name="190823" />
   </component>
   <component name="TestRunnerService">
     <option name="PROJECT_TEST_RUNNER" value="Unittests" />
