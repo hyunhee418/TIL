@@ -33,7 +33,7 @@ def isFull():
 
 for i in range(1, 4):
     enQueue(i)
-
+print(q)
 for i in range(1, 4):
     print(deQueue())
 print(isEmpty())
