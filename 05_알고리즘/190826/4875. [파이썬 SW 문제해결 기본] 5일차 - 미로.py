@@ -69,7 +69,7 @@ T = int(input())
 #         i, j = stack.pop()
 #         return backtracking(li, i, j)
 
-def dfs(li, i, j):
+# def dfs(li, i, j):
 
 
 #           if i + 1 < len(li) and li[i + 1][j] == '2':
@@ -99,7 +99,23 @@ def dfs(li, i, j):
 #     else:
 #         i, j = stack.pop()
 #         return backtracking(li, i, j)
-
+# def dfs(li, x, y):
+#     f = 0
+#     dx = [0, 0, 1, -1]
+#     dy = [1, -1, 0, 0]
+#     while stack == []:
+#         for i in range(len(dx)):
+#             if 0 <= x + dx[i] < len(li) and 0 <= y + dy[i] < len(li) and li[x + dx[i]][y + dy[i]] == '2':
+#                 return 1
+#
+#             if  0 <= x + dx[i] < len(li) and 0 <= y + dy[i] < len(li) and li[x + dx[i]][y + dy[i]] == '0':
+#                 li[x + dx[i]][y + dy[i]] = 1
+#                 x = x + dx[i]
+#                 y = y + dy[i]
+#                 stack.append((x + dx[i], y + dy[i]))
+#
+#         i, j = stack.pop()
+#     return 0
 
 for tc in range(1, T + 1):
     f = 0
@@ -109,9 +125,31 @@ for tc in range(1, T + 1):
         for y in range(len(li[0])):
             if li[x][y] == '3':
                 stack = [(0, 0), (x, y)]
-                result = dfs(li, x, y)
-                print("#%d %d" %(tc, result))
+                # result = dfs(li, x, y)
+                # print("#%d %d" %(tc, result))
                 f = 1
                 break
         if f:
             break
+
+    f = 0
+    dx = [0, 0, 1, -1]
+    dy = [1, -1, 0, 0]
+    while stack != []:
+        i = 0
+        while i < len(dx):
+            if 0 <= x + dx[i] < len(li) and 0 <= y + dy[i] < len(li) and li[x + dx[i]][y + dy[i]] == '2':
+                print(1)
+                f = 1
+                break
+            if  0 <= x + dx[i] < len(li) and 0 <= y + dy[i] < len(li) and li[x + dx[i]][y + dy[i]] == '0':
+                li[x + dx[i]][y + dy[i]] = 1
+                x = x + dx[i]
+                y = y + dy[i]
+                stack.append((x + dx[i], y + dy[i]))
+                i = -1
+            i += 1
+        if f:
+            break
+        i, j = stack.pop()
+    print(0)
