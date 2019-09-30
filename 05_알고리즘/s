@@ -1,0 +1,162 @@
+import sys
+sys.stdin = open('15683.txt', 'r')
+
+N, M = map(int, input().split())
+arr = [list(map(int, input().split())) for _ in range(N)]
+
+dx, dy = [0, 0, -1, 1], [1, -1, 0, 0]
+
+for i in range(N):
+    for j in range(M):
+        print(i, j)
+        if arr[i][j] == 5:
+            s = 1
+            for idx in range(4):
+                s = 1
+                while 0 <= j+s*dy[idx] < M and 0<= i + s * dx[idx] < N:
+                    if arr[i + s * dx[idx]][j+s*dy[idx]] == 6:
+                        break
+                    arr[i + s * dx[idx]][j+s*dy[idx]] = '#'
+                    s += 1
+        elif arr[i][j] == 1:
+            s = 1
+            cnt1 = 0
+            max_1 = 0
+            idd = 0
+            for idx in range(4):
+                cnt1 = 0
+                while 0 <= j+s*dy[idx] < M and 0<= i + s * dx[idx] < N:
+                    if arr[i + s * dx[idx]][j+s*dy[idx]] == 6:
+                        break
+                    elif arr[i + s * dx[idx]][j+s*dy[idx]] == '#':
+                        pass
+                    elif arr[i + s * dx[idx]][j+s*dy[idx]]:
+                        pass
+                    else:
+                        cnt1 += 1
+                        s += 1
+                if cnt1 > max_1:
+                    max_1 = cnt1
+                    idd = idx
+                s = 1
+            while 0 <= j+s*dy[idd] < M and 0<= i + s * dx[idd] < N:
+                if arr[i + s * dx[idd]][j + s * dy[idd]] == 6:
+                    break
+                elif arr[i + s * dx[idd]][j + s * dy[idd]]:
+                    pass
+                arr[i + s * dx[idd]][j + s * dy[idd]] = '#'
+                s += 1
+        elif arr[i][j] == 2:
+            s = 1
+            cnt2 = 0
+            max_2 = 0
+            idd = 0
+            for idx in range(0, 4, 2):
+                cnt2 = 0
+                while 0 <= j+s*dy[idx] < M and 0<= i + s * dx[idx] < N:
+                    if arr[i + s * dx[idx]][j + s * dy[idx]] == 6:
+                        break
+                    elif arr[i + s * dx[idx]][j + s * dy[idx]] == '#':
+                        pass
+                    elif arr[i + s * dx[idd]][j+s*dy[idx]]:
+                        pass
+                    else:
+                        s += 1
+                        cnt2 += 1
+                s = 1
+                while 0<= j+s*dy[idx+1] < M and 0<= i + s * dx[idx+1] < N:
+                    if arr[i + s * dx[idx+1]][j + s * dy[idx+1]] == 6:
+                        break
+                    elif arr[i + s * dx[idx+1]][j + s * dy[idx+1]] == '#':
+                        pass
+                    elif arr[i + s * dx[idx+1]][j+s*dy[idx+1]]:
+                        pass
+                    else:
+                        s += 1
+                        cnt2 += 1
+                if cnt2 > max_2:
+                    max_2 = cnt2
+                    idd = idx
+            s = 1
+            while 0 <= j+s*dy[idd] < M and 0<= i + s * dx[idd] < N:
+                if arr[i + s * dx[idd]][j + s * dy[idd]] == 6:
+                    break
+                arr[i + s * dx[idd]][j + s * dy[idd]] = '#'
+                s += 1
+            s = 1
+            while 0<= j+s*dy[idd+1] < M and 0<= i + s * dx[idd+1] < N:
+                if arr[i + s * dx[idd+1]][j + s * dy[idd+1]] == 6:
+                    break
+                arr[i + s * dx[idd + 1]][j + s * dy[idd + 1]] = '#'
+                s += 1
+        elif arr[i][j] == 3:
+            s = 1
+            cnt3 = 0
+            l = [0]*4
+            for idx in range(4):
+                cnt3 = 0
+                while 0 <= j + s * dy[idx] < M and 0 <= i + s * dx[idx] < N:
+                    if arr[i + s * dx[idx]][j + s * dy[idx]] == 6:
+                        break
+                    elif arr[i + s * dx[idx]][j + s * dy[idx]] == '#':
+                        pass
+                    else:
+                        cnt3 += 1
+                        s += 1
+                l[idx] = cnt3
+                s = 1
+            for iddddddd in range(0, 4, 2):
+                if l[iddddddd] > l[iddddddd + 1]:
+                    s = 1
+                    while 0 <= j + s * dx[iddddddd] < M and 0 <= i + s * dy[iddddddd] < M:
+                        if arr[i + s * dx[iddddddd]][j + s * dy[iddddddd]] == 6:
+                            break
+                        arr[i + s * dx[iddddddd]][j + s * dy[iddddddd]] = '#'
+                        s += 1
+                else:
+                    s = 1
+                    while 0 <= j + s * dx[iddddddd] < M and 0 <= i + s * dy[iddddddd] < M:
+                        if arr[i + s * dx[iddddddd + 1]][j + s * dy[iddddddd + 1]] == 6:
+                            break
+                        arr[i + s * dx[iddddddd]][j + s * dy[iddddddd]] = '#'
+                        s += 1
+
+        elif arr[i][j] == 4:
+            s = 1
+            cnt4 = 0
+            l = [0] * 4
+            for idx in range(4):
+                cnt4 = 0
+                while 0 <= j + s * dy[idx] < M and 0 <= i + s * dx[idx] < N:
+                    if arr[i + s * dx[idx]][j + s * dy[idx]] == 6:
+                        break
+                    elif arr[i + s * dx[idx]][j + s * dy[idx]] == '#':
+                        pass
+                    else:
+                        cnt4 += 1
+                        s += 1
+                l[idx] = cnt4
+                s = 1
+            minmin = 0
+            id4 = 0
+            for iiiid in range(4):
+                if l[iiiid] > minmin:
+                    minmin = l[iddddddd]
+                    id4 = iddddddd
+            for di in range(4):
+                if di == id4:
+                    pass
+                else:
+                    s = 1
+                    while 0 <= j + s * dy[di4] < M and 0 <= i + s * dx[di4] < N:
+                        if arr[i + s * dx[di4]][j + s * dy[di4]] == 6:
+                            break
+                        arr[i + s * dx[di4]][j + s * dy[di4]] = '#'
+                        s += 1
+re_cnt = 0
+for xx in range(N):
+    for yy in range(M):
+        if arr[xx][yy] == 0:
+            re_cnt += 1
+print(arr)
+print(re_cnt)
