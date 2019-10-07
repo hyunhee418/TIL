@@ -9,11 +9,11 @@ def guess(request):
 
 def answer(request):
     count = 0
-    if request.GET.get('q1') == '1992-04-18':
+    if request.POST.get('q1') == '1992-04-18':
         count += 1
-    if request.GET.get('q2') == '힙합':
+    if request.POST.get('q2') == '힙합':
         count += 1
-    if request.GET.get('q3') == '옹돌이':
+    if request.POST.get('q3') == '옹돌이':
         count += 1
     print(request.GET.get('q1'))
 

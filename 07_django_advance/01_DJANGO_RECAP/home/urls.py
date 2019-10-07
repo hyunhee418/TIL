@@ -6,6 +6,6 @@ app_name = 'home'
 urlpatterns = [
     path('guess/', views.guess, name='guess'),  # HOST/home/hi
     path('', views.index, name='index'),    # HOST/home/
-    path('answer/', views.answer, name='answer'),
+    path('answer/', views.answer, name='answer'),   # HOST/home/answer
 ]
 
