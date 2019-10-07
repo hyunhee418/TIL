@@ -25,3 +25,21 @@ def create(request):
     article.content = request.POST.get('content')
     article.save()
     return redirect('board:detail', article.id)
+
+def edit(request, id):
+    article = Article.objects.get(id=id)
+    return render(request, 'board/edit.html', {
+        'article': article
+    })
+
+def update(request, id):
+    article = Article.objects.get(id=id)
+    article.title = request.POST.get('title')
+    article.content = request.POST.get('content')
+    article.save()
+    return redirect('board:detail', article.id)
+
+def delete(request, id):
+    article = Article.objects.get(id=id)
+    article.delete()
+    return redirect('board:list')

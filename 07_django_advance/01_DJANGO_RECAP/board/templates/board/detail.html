@@ -6,4 +6,14 @@
     <p>
         {{ article.content }}
     </p>
+    <div>
+        <a href="{% url 'board:edit' article.id %}">
+            <button>Edit</button>
+        </a>
+    </div>
+    <div>
+        <a href="{% url 'board:delete' article.id %}">
+            <button>Delete</button>
+        </a>
+    </div>
 {% endblock body %}
