@@ -1,0 +1,23 @@
+{% extends './base.html' %}
+{% block title %}new{% endblock title %}
+{% block body %}
+<h1>Add student</h1>
+<form action="{% url 'classroom:create' %}" method="POST">
+    {% csrf_token %}
+    <div>
+        <label for="name">Name: </label>
+        <input type="text" id="name" name="name">
+    </div>
+    <div>
+        <label for="age">Age: </label>
+        <input type="text" id="age" name="age">
+    </div>
+    <div>
+        <label for="major">Major: </label>
+        <input type="text" id="major" name="major">
+    </div>
+    <div>
+        <input type="submit" value="submit">
+    </div>
+</form>
+{% endblock body %}

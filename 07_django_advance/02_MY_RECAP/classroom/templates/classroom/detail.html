@@ -1,0 +1,20 @@
+{% extends './base.html' %}
+{% block title %}Detail{% endblock title %}
+{% block body %}
+<h1>{{ student.name }}</h1>
+<div>나이 : {{ student.age }}</div>
+<div>전공 : {{ student.major }}</div>
+<div>
+    <form action="{% url 'classroom:edit' student.id %}" method="POST">
+        {% csrf_token %}
+        <input type="submit" value="Edit">
+    </form>
+    <form action="{% url 'classroom:delete' student.id %}" method="POST">
+    {% csrf_token %}
+        <input type="submit" value="Delete" onclick="return confirm('삭제하시겠습니까?')">
+    </form>
+    <form action="{% url 'classroom:list' %}" method="GET">
+        <input type="submit" value="List">
+    </form>
+</div>
+{% endblock body %}
