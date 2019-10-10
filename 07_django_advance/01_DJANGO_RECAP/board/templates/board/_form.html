@@ -1,0 +1,7 @@
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit">
+</form>
+
+{% comment %} form tag 안의 button 태그는 무조건 submit, 그냥 버튼은 input type=button {% endcomment %}

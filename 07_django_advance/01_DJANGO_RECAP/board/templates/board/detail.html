@@ -12,8 +12,20 @@
         </a>
     </div>
     <div>
-        <a href="{% url 'board:delete' article.id %}">
-            <button>Delete</button>
-        </a>
+        <form action="{% url 'board:delete' article.id %}" method="POST">
+            {% csrf_token %}
+            <input id="delButton" type="submit" value="Delete"  onclick="return confirm('삭제하시겠습니까?')">
+        </form>
     </div>
+    {% comment %} <script>
+        const delButton = document.querySelector('#delButton');
+        function popUp(){
+            return confirm('ㅇ?');
+        }
+
+        delButton.addEventListener('mouseover', popUp);
+    </script> {% endcomment %}
+    <form action="{% url 'board:list' %}" method="GET">
+        <input type="submit" value="List">
+    </form>
 {% endblock body %}

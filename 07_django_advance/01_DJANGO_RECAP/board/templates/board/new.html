@@ -4,16 +4,5 @@
 {% block body %}
 <h1>New article</h1>
 
-<form action="{% url 'board:create' %}" method="POST">
-    {% csrf_token %}
-    <div>
-    <label for="title">Title:</label>
-    <input id="title" name="title" type="text">
-    </div>
-    <div>
-    <label for="content">Content:</label>
-    <textarea id="content" name="content" cols="30" rows="10"></textarea>
-    </div>
-    <div><input type="submit" value="제출"></div>
-</form>
+{% include 'board/_form.html'%}
 {% endblock body %}
