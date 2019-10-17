@@ -1,22 +1,26 @@
-{% extends 'board/base.html' %}
+{% extends 'base.html' %}
 {% block title %} Article detail {% endblock title %}
 
 {% block body%}
     <h1>{{ article.title }}</h1>
+    <div>
+        <small>created: {{article.created_at}}</small>
+        <small>updated: {{article.updated_at}}</small>
+    </div>
+    
     <p>
         {{ article.content }}
     </p>
-    <div>
-        <a href="{% url 'board:edit' article.id %}">
+    <div style="display:inline-block">
+        <a href="{% url 'board:edit_article' article.id %}">
             <button>Edit</button>
         </a>
     </div>
-    <div>
-        <form action="{% url 'board:delete' article.id %}" method="POST">
-            {% csrf_token %}
-            <input id="delButton" type="submit" value="Delete"  onclick="return confirm('삭제하시겠습니까?')">
-        </form>
-    </div>
+    <form style="display:inline-block" action="{% url 'board:delete_article' article.id %}" method="POST">
+        {% csrf_token %}
+        <input id="delButton" type="submit" value="Delete"  onclick="return confirm('삭제하시겠습니까?')">
+    </form>
+
     {% comment %} <script>
         const delButton = document.querySelector('#delButton');
         function popUp(){
@@ -25,7 +29,11 @@
 
         delButton.addEventListener('mouseover', popUp);
     </script> {% endcomment %}
-    <form action="{% url 'board:list' %}" method="GET">
+    <form style="display:inline-block" action="{% url 'board:article_list' %}" method="GET">
         <input type="submit" value="List">
     </form>
+
+    <hr>
+
+    {% include 'board/_comment.html' %}
 {% endblock body %}

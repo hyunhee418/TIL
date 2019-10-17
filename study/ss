@@ -1,0 +1,40 @@
+11047
+
+117732	212
+
+def pay(money, cnt):
+    global li
+    for idx in range(len(li)-1, -1, -1):
+        while li[idx] <= money:
+            money -= li[idx]
+            cnt += 1
+        if money <= 0:
+            return cnt
+N, K = map(int, input().split())
+li = [int(input()) for _ in range(N)]
+print(pay(K, 0))
+
+
+11399
+
+117592	112
+
+N = int(input())
+li = sorted(list(map(int, input().split())))
+re = 0
+for idx in range(N):
+    re += li[idx]*(N-idx)
+
+print(re)
+
+2217
+
+126224	304
+
+N = int(input())
+li = sorted([int(input()) for _ in range(N)])
+maxr = li[0] * N
+for i in range(1, len(li)):
+    if li[i]*(N-i) > maxr:
+        maxr = li[i]*(N-i)
+print(maxr)

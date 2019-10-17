@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Detail</title>
+</head>
+<body>
+    <h1>{{question.title}}</h1>
+    
+    <form action="{% url 'poll:new_vote' question.id %}" method="POST">
+    {% csrf_token %}
+        {{form}}
+        <input type="submit">
+    </form>
+     <ul>
+        {% for choice in choices %}
+            <li>{{choice.content}} : {{choice.votes}}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

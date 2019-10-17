@@ -1,0 +1,52 @@
+<header class="mt-4">
+    <form action="{% url 'sns:create_posting' %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% comment %} form은 enctype을 무조건 text로 defalt됨 이는 form안에 모든 것이 다 text라고 취급하기 때문에 file을 넣고 싶다면 enctype="multipart/form-data"를 반드시 넣어야 함 {% endcomment %}
+        <div class="form-row align-items-center">
+
+        {% comment %} icon select tag -> forms에 icon을 추가해야만 나온다 {% endcomment %}
+            <div class="col-auto my-1">
+                <label for="icon" class="sr-only">icon</label>
+                <select name="icon" id="icon" class="custom-select mr-sm-2">
+                    <option value="fas fa-question">?</option>
+                    <option value="far fa-smile">:)</option>
+                    <option value="far fa-angry">:(</option>
+                    <option value="far fa-smile-wink">;)</option>
+                    <option value="fab fa-angrycreative">flex</option>
+                </select>
+            </div>
+            
+            {% comment %} content input {% endcomment %}
+            <div class="col-sm-6 my-1">
+                <label for="content" class="sr-only"> content</label>
+                <input id="content" name="content" type="text" class="form-control" placeholder="feels like.."> 
+            </div>
+
+            {% comment %} image file input {% endcomment %}
+            <div class="col-sm-4 my-1 input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">
+                        Upload
+                    </span>
+                </div>
+                <div class="custom-file">
+                    <input type="file" id="image" name="image" class="custom-file-input" accept"image/*">
+                    <label for="image" class="custom-file-label">choose image</label>
+                </div>
+            </div>
+
+            {% comment %} submit button {% endcomment %}
+            <div class="col-auto my-1">
+                <button type="submit" class="btn btn-secondary">Submit</button>
+            </div>
+    
+            {% comment %} <label for="content" class="sr-only">content</label>
+            <input type="text" id="content" name="content">
+            
+            <input type="file" id="image" name="image" accept="image/*">  {% comment %} 이미지 파일들 중에 다 {% endcomment %}
+            {% comment %} <label for="image"></label>
+
+            <button type="submit" class="btn btn-secondary">Submit</button> {% endcomment %}
+        </div>
+    </form>
+</header>

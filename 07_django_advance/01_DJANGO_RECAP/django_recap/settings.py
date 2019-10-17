@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+# 프로젝트 폴더
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
@@ -40,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'home',
     'board',
+    'poll',
 ]
 
 MIDDLEWARE = [
@@ -57,7 +59,11 @@ ROOT_URLCONF = 'django_recap.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        # 프로젝트 전체에서 공통으로 쓸 HTML을 어디에 두고, 어떻게 찾을 것인가.
+        # django는 템플릿(html)을 찾을 때 기본적으로 INSTALLED_APPS 안의 templates/폴더를 찾는다.
+        # 아래의 코드는 추가적으로 찾고싶은 위치를 우리가 지정함
+        # BASE_DIR은 프로젝트 폴더를 의미하므로 최종적으로 01_DJANGO_RECAP/templates도 찾아달라는 의미이다.
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],  # 기본값인 []는 INSTALLED_APPS 안의 templates/폴더를 찾는다.
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -108,7 +114,8 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'ko-kr'
 
-TIME_ZONE = 'UTC'
+# TIME_ZONE을 'Asia/Seoul'로 바꾸면 저장되기는 영국 / 보여주기를 한국으로 보여줌
+TIME_ZONE = 'Asia/Seoul'
 
 USE_I18N = True
 

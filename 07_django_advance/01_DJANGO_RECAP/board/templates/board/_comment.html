@@ -1,0 +1,21 @@
+<form action="{% url 'board:new_comment' article.id%}" method="POST">
+    {% csrf_token %}
+    {{comment_form}}
+    <input type="submit">
+</form>
+
+
+{% if comments %}
+    <ul>
+        {% for comment in comments %}
+            <li>
+                {{ comment.content }}
+                <form style="display:inline-block" action="{% url 'board:delete_comment' article.id comment.id %}" method="POST">
+                {% csrf_token %}
+                    <input type="submit" value="[X]">
+                </form>
+                <button>Edit</button>
+            </li>
+        {% endfor %}
+    </ul>
+{% endif %}
