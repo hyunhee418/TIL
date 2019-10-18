@@ -6,7 +6,7 @@ class Article(models.Model):
     title = models.CharField(max_length=100)  # 기본적으로 setting 값이 들어가있어 null=False와 같은 것은 굳이 쓸 필요 없음.
     content = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     def get_absolute_url(self):  # detail page가 있을 때
         return reverse("board:article_detail", kwargs={"article_id": self.id})
@@ -17,4 +17,4 @@ class Comment(models.Model):
     # CASCADE => article을 삭제할 때 다같이 삭제하겠다.
 
     created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
