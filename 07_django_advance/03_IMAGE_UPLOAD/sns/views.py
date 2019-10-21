@@ -19,9 +19,11 @@ def posting_list(request):
 def posting_detail(request, posting_id):
     posting = get_object_or_404(Posting, id=posting_id)
     comments = posting.comments.all()  # posting.comment_set이 아닌 이유는 related name = comments이기 때문
+    is_like = True if posting.likes.filter(id=request.user.id).exists() else False
     return render(request, 'sns/posting_detail.html', {
         'posting':posting,
         'comments':comments,
+        'is_like': is_like
     })
 @login_required  # login 이 x이면 무조건 accounts/login으로 무조건 가라 만일 이름을 accounts login이 싫다면 (login_url=)인자를 지정해줌 그러나 붙일 떄마다 해줘야해서 굳이 일을 두번할 필요 없음
 @require_POST
@@ -63,3 +65,15 @@ def delete_comment(request, posting_id, comment_id):
     comment = get_object_or_404(Comment, posting_id=posting_id, id=comment_id)
     comment.delete()
     return redirect(posting)
+
+@login_required
+@require_POST
+def toggle_like(request, posting_id):
+    user = request.user
+    posting = get_object_or_404(Posting, id=posting_id)
+    if posting.likes.filter(id=user.id).exists():
+        posting.likes.remove(user)  # Delete
+    else:
+        posting.likes.add(user)   # Create
+    return redirect(posting)
+

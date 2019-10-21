@@ -122,7 +122,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+# STATICFILES_DIRS = os.path.join(BASE_DIR, 'assets')
 
+# 기본적으로 static을 찾지만 추가적으로 여기도 보겠다는 뜻
 
 MEDIA_URL = '/media/'  # 찾을 위치
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # 저장될 위치

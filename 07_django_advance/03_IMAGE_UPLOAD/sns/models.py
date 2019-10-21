@@ -1,6 +1,10 @@
 from django.db import models
 from django.urls import reverse
 from django.conf import settings  # Master_App/settings.py
+
+
+from faker import Faker
+f = Faker()
 """
 삭제할 때 
 $python manage.py migrate <Appname> zero
@@ -13,6 +17,7 @@ $rm <Appname>/migrations/0*
 
 class Posting(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    likes = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='like_postings', blank=True)
     content = models.TextField()
     icon = models.CharField(max_length=30, default='')
     image = models.ImageField(blank=True)  # 이미지가 비워 있을 수 있다
@@ -27,6 +32,15 @@ class Posting(models.Model):
     
     def __str__(self):
         return f'{self.pk}:{self.content[:20]}'
+
+    @classmethod
+    def dummy(cls, n):
+        for _ in range(n):
+            cls.objects.create(
+                user_id=1,
+                content=f.sentence(),
+                icon='fas fa-angrycreative',
+                )
     
 class Comment(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
@@ -41,3 +55,13 @@ class Comment(models.Model):
 
     def __str__(self):
         return f'{self.id}: {self.content[:20]}'
+
+    @classmethod
+    def dummy(cls, n, posting_id):
+        for _ in range(n):
+            cls.objects.create(
+                user_id=1,
+                posting_id=posting_id,
+                content=f.sentence(),
+                )
+    
