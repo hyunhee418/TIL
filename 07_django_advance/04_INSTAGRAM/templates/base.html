@@ -1,0 +1,23 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">    {% comment %} static에서 이미 assets까지 들어감  {% endcomment %}
+    {% comment %} 앱 내에 들어갈 때는 헷갈리지 않도록 static/app_name/file 로 설정  {% endcomment %}
+    <title>Fake Insta</title>
+    <script src="https://kit.fontawesome.com/84a0eb3116.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    {% include '_navbar.html' %}
+    <div class="container">
+    {% block body %}
+    {% endblock body %}
+    </div>
+    <script src="{%static 'js/jquery-3.3.1.slim.min.js' %}"></script>
+    <script src="{%static 'js/popper.min.js' %}"></script>
+    <script src="{%static 'js/bootstrap.min.js' %}"></script>
+</body>
+</html>

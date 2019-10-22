@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'django_extensions',
+    'bootstrap4',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -57,7 +58,10 @@ ROOT_URLCONF = 'instagram.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            # 자동으로 BASE_DIR/App/templates/ 를 자동으로 검색
+            os.path.join(BASE_DIR, 'templates')  # 여기(BASE_DIR/templates/)도 찾아봐주렴
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -128,8 +132,9 @@ AUTH_USER_MODEL = 'accounts.User'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = '/static/'  # html에서 {% static 'MY/FILE' %} => 이게 HTML의 접두사
 
-STATIC_DIRS = [
-
+STATICFILES_DIRS = [
+    # App/static/자동으로 검색
+    os.path.join(BASE_DIR, 'assets'),   # 추가로 여기(BASE_DIR/assets/)도 봐주렴
 ]

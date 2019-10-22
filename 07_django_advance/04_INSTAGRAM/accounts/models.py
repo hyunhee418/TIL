@@ -18,5 +18,5 @@ class User(AbstractUser):
         for i in range(n):
             u = cls()
             u.username = f.first_name()
-            u.set_password('4321rewq')
+            u.password = u.set_password('4321rewq')
             u.save()
