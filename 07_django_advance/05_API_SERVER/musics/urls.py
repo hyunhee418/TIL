@@ -12,8 +12,7 @@ schema_view = get_schema_view(
         # 선택
         description='아티스트, 음악, 의견을 제공하는 API 입니다.',
         contact=openapi.Contact('hyunhee18@gmail.com'),
-        license=openapi.License('SSAFY API'),
-
+        license=openapi.License('SSAFY License'),
     )
 )
 
@@ -21,11 +20,13 @@ app_name = 'musics'
 
 urlpatterns = [
     path('docs/', schema_view.with_ui('redoc'), name='api_docs'),
-    path('swagger/', schema_view.with_ui('swagger'), name='swagger'),
+    path('swagger/', schema_view.with_ui('swagger'), name='api_swagger'),
 
     path('artists/', views.artist_list, name='artist_list'),
     path('artists/<int:artist_id>/', views.artist_detail, name='artist_detail'),
 
     path('musics/', views.music_list, name='music_list'),
     path('musics/<int:music_id>', views.music_detail, name='music_detail'),
+    
+    path('musics/<int:music_id>/comments/', views.create_comment, name='create_comment'),
 ]

@@ -1,6 +1,6 @@
 # from django import forms
 from rest_framework import serializers
-from .models import Artist, Music
+from .models import Artist, Music, Comment
 
 class ArtistSerializer(serializers.ModelSerializer):
 
@@ -17,3 +17,13 @@ class ArtistDetailSerializer(ArtistSerializer):
     music_set = MusicSerializer(many=True)
     class Meta(ArtistSerializer.Meta):
         fields = ArtistSerializer.Meta.fields + ('music_set',)
+
+class CommentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Comment
+        fields = ('id', 'content','music_id',)
+
+class MusicDetailSerializer(MusicSerializer):
+    comments = CommentSerializer(source='comment_set', many=True)
+    class Meta(MusicSerializer.Meta):
+        fields = MusicSerializer.Meta.fields + ('comments',)
