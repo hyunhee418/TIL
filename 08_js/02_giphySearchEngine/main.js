@@ -6,7 +6,7 @@ const button = document.querySelector('#js-go');
 const inputArea = document.querySelector('#js-userinput');
 const resultArea = document.querySelector('#js-result-area')
 
-
+const func = function () {};
 
 // const whenClicked = function () {
 //     console.log('클릭 되었다.')
