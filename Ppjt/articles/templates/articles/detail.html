@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block body %}
+    <h1>{{article.title}}</h1>
+    by {{article.user}}
+    {{article.content}}
+    {% if request.user.is_authenticated %}
+        {% if request.user in article.user_like.all %}
+            
+            <a href="{% url 'articles:like' article.id %}">안좋아요</a>
+        {%else%}
+            <a href="{% url 'articles:like' article.id %}">좋아요</a>
+        {%endif%}
+        {{comment_form.as_p}}
+    {% endif %}
+    {% for comment in comments %}
+        {{comment.user.username}} : {{comment.content}}
+    {% endfor %}
+{% endblock %}

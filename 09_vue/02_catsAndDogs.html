@@ -1,0 +1,61 @@
+<!-- 02_catsAndDogs.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>cats & dogs</title>
+</head>
+<body>
+    <div id="app">
+        <button v-on:click="getCatImage">애용</button>
+        <button v-on:click="getDogImage">왕왕</button>
+        <span>애용: {{catCount}}</span>
+        <span>왕왕: {{dogCount}}</span>
+        <div>
+            <!-- <img v-if="imageUrl" v-bind:src="imageUrl" alt="animal-image"> -->
+            <img v-for="imageUrl in imageUrls" v-bind:src="imageUrl" alt="animal-image" height="200px">
+        </div>
+    </div>
+    <!-- load하는 시간 때문에 content 먼저 나오게 하자 따라서 script는 밑에 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                // 맨 처음 app이 load 되었을 때의 data
+                catCount:0,
+                dogCount:0,
+                imageUrls:[],
+            },
+            // methods === data 바꾸려고 쓰는 함수.
+            methods: { // methods에서 key: [VALUE: 절대 ()=>{} 쓰지말기];
+                getCatImage: function () {
+                    const URL = 'https://api.thecatapi.com/v1/images/search';
+                    axios.get(URL)
+                        // .then(resJson => resJson.json())  -> axios는 이미 parsing 되어있어서 지워도 됨 // resJson === JSON 문자열
+                        // .then(resData => this.imageUrl = resData[0].url)
+                        // .then(resData => {
+                        //         const WhatIWant = resData.data;
+                        //         this.imageUrls = WhatIWant[0].url;
+                        //         })
+                        .then(res => {
+                            this.imageUrls.push(res.data[0].url);
+                            this.catCount++;
+                        })
+                },
+                getDogImage: function () {
+                    const URL = 'https://dog.ceo/api/breeds/image/random';
+                    axios.get(URL) // axios는 응답이 이미 파싱되어있고, key data
+                        // .then(resJson => resJson.json())  
+                        // .then(resData => this.imageUrl = resData.message)\
+                        .then(res => {
+                            this.imageUrls.push(res.data.message);
+                            this.dogCount++;
+                        })
+                },
+            },
+        })
+    </script>
+</body>
+</html>

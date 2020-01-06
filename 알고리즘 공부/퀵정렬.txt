@@ -1,0 +1,34 @@
+﻿import sys
+sys.stdin = open("5205input.txt","r")
+
+def qsort(a, l, r):
+    if l<r:
+        m = partition(a, l, r)
+        qsort(a, l, m-1)
+        # qsort(a, m + 1, r)
+        if m < (N//2):
+            qsort(a, m+1, r)
+
+
+def partition(a, l, r):
+
+    i = l-1                 # 피봇보다 큰  구간 왼쪽 경계
+    j = l                   # 피봇 보다 큰 구간 오른쪽 경계 
+    pivot = a[r]        # 가장 오른 쪽 원소를 피봇으로 결정
+    while j<r:          # 피봇에 다다르기 전까지
+        if pivot>a[j]:  # 피봇보다 작으면 i 이동
+            i += 1
+            if i<j:         # i와 j가 다르면 피봇보다 큰 구간 존재
+                a[i], a[j] = a[j], a[i]  # 
+        j += 1
+    a[i+1], a[r] = pivot, a[i+1]   # 피봇과 교환
+    return i+1
+
+T = int(input())
+
+for tc in range(1, T+1):
+    N = int(input())
+    A = list(map(int, input().split()))
+    qsort(A, 0, N-1)
+    print('#{} {}'.format(tc, A[N//2]))
+

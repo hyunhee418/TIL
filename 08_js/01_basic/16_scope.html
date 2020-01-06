@@ -1,0 +1,47 @@
+<!-- 16_scope.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // JS Global(전역) 변수
+        glob1 = 1;
+        for (t=0; t<10; t++){
+            glob2 = 11;
+        }
+        function qq() {
+            glob3 = 111;
+        }
+        qq();
+        console(glob1, glob2, glob3)
+        // var / let / const
+        // var: function scope
+        // 함수일 때만 격리된 공간임
+        for (var i=0; i<10; i++) {
+            var j = 100;
+        };
+        console.log(i, j);
+
+        function aa() {
+            var a = 1
+        };
+
+        console.log(a);
+        // let/const : block({}) scope
+        // {}안에 있으면 무조건 격리된 공간임
+        for (let x=0; x<10; x++){
+            let y = 100;
+        };
+        console.log(x, y);  // x, y를 못찾음 {} 밖에서는 의미가 없음
+
+        function bb () {
+            const b = 1
+        };
+
+        console.log(b);
+    </script>
+</body>
+</html>
