@@ -13,14 +13,15 @@ text = bs4.BeautifulSoup(response, 'html.parser')
 rows = text.select('.lst50')
 
 
-# print(type(rows))  # rows는 list이다. 따라서, 하나씩 가져오기
+print(type(rows))  # rows는 list이다. 따라서, 하나씩 가져오기
+print(rows)
 
-writer = csv.writer(open('melon50.csv', 'w', encoding='utf-8', newline=''))  # 대리작가 고용(writer), newline=''는 enter가 두 번 들어가므로 없애기
-writer.writerow(['순위', '제목', '가수'])
+# writer = csv.writer(open('melon50.csv', 'w', encoding='utf-8', newline=''))  # 대리작가 고용(writer), newline=''는 enter가 두 번 들어가므로 없애기
+# writer.writerow(['순위', '제목', '가수'])
 
-for row in rows:
-    rank = row.select_one('td:nth-child(2) > div > span.rank').text
-    title = row.select_one('td:nth-child(6) > div > div > div.ellipsis.rank01 > span > a').text
-    artist = row.select_one('td:nth-child(6) > div > div > div.ellipsis.rank02 > a').text
-    # print(rank, title, artist)
-    writer.writerow([rank, title, artist])
+# for row in rows:
+#     rank = row.select_one('td:nth-child(2) > div > span.rank').text
+#     title = row.select_one('td:nth-child(6) > div > div > div.ellipsis.rank01 > span > a').text
+#     artist = row.select_one('td:nth-child(6) > div > div > div.ellipsis.rank02 > a').text
+#     # print(rank, title, artist)
+#     writer.writerow([rank, title, artist])
